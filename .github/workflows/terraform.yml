@@ -98,5 +98,5 @@ jobs:
     #  if: github.ref == 'refs/heads/"Terraform"' && github.event_name == 'push'
 #      run: terraform apply -auto-approve 
     - name: Terraform Destory
-      run:  terraform destory -auto-approve 
+      run:  terraform destroy -auto-approve 
       #-input=false
