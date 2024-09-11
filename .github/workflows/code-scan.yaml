@@ -1,0 +1,31 @@
+name: PHP Code Analysis
+
+on:
+  push:
+    branches:
+      - '**'  # Runs on all branches
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  php-code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Run PHP_CodeSniffer
+        run: vendor/bin/phpcs --standard=PSR12 .
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse .
