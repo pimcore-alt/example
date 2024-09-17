@@ -5,7 +5,8 @@ on:
   push:
     branches:
       - main 
-      - scanning
+      - scan
+      - test
         # or any other branch you want to scan on push
   pull_request: # Optionally, run on pull requests as well
 
@@ -24,14 +25,22 @@ jobs:
       with:
         php-version: '8.2'  # Use the appropriate PHP version for your project
 
+  # Optional: Ensure PHPStan and PHP_CodeSniffer are installed
+    - name: Install PHPStan and PHP_CodeSniffer
+      run: composer require --dev phpstan/phpstan squizlabs/php_codesniffer
+
     # Install PHP dependencies
     - name: Install dependencies
       run: composer install --no-progress --no-suggest --prefer-dist
 
+   # Debug step to list contents of vendor/bin
+    - name: List vendor/bin directory
+      run: ls -l vendor/bin
+
     # Run PHPStan for static code analysis
     - name: Run PHPStan
-      run: ./vendor/bin/phpstan analyse --level=max .  # Adjust the level and directories based on your project structure
+      run: vendor/bin/phpstan analyse --level=max src/  # Adjust the level and directories based on your project structure
 
     # Optionally, you can use a linter like PHP_CodeSniffer
     - name: Run PHP_CodeSniffer
-      run: ./vendor/bin/phpcs --standard=PSR12 .
+      run: vendor/bin/phpcs --standard=PSR12 src/
