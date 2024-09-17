@@ -1,31 +1,37 @@
-name: PHP Code Analysis
+name: PHP Code Scan
 
+# Trigger the workflow when pushing to any branch
 on:
   push:
     branches:
-      - '**'  # Runs on all branches
-  pull_request:
-    branches:
-      - '**'
+      - main 
+      - scanning
+        # or any other branch you want to scan on push
+  pull_request: # Optionally, run on pull requests as well
 
 jobs:
-  php-code-analysis:
+  phpstan:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    # Checkout the latest code
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
+    # Set up PHP environment
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'  # Use the appropriate PHP version for your project
 
-      - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
+    # Install PHP dependencies
+    - name: Install dependencies
+      run: composer install --no-progress --no-suggest --prefer-dist
 
-      - name: Run PHP_CodeSniffer
-        run: vendor/bin/phpcs --standard=PSR12 .
+    # Run PHPStan for static code analysis
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse --level=max .  # Adjust the level and directories based on your project structure
 
-      - name: Run PHPStan
-        run: vendor/bin/phpstan analyse .
+    # Optionally, you can use a linter like PHP_CodeSniffer
+    - name: Run PHP_CodeSniffer
+      run: vendor/bin/phpcs --standard=PSR12 .
