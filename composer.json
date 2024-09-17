@@ -12,13 +12,11 @@
   },
   "prefer-stable": true,
   "require": {
-    "pimcore/pimcore": "*",
-    "pimcore/platform-version": "^2024.2",    
     "pimcore/admin-ui-classic-bundle": "*",
+    "pimcore/pimcore": "*",
     "symfony/amqp-messenger": "^6.2",
     "symfony/dotenv": "^6.2",
     "symfony/runtime": "^6.2"
-
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",
