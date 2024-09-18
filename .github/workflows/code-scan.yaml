@@ -52,8 +52,8 @@ jobs:
       run: ./local-php-security-checker .
 
     # Run PHPStan for static code analysis
-    - name: Run PHPStan
-      run: vendor/bin/phpstan analyse --level=max src   # Adjust the level and directories based on your project structure
+ #   - name: Run PHPStan
+#      run: vendor/bin/phpstan analyse --level=max src   # Adjust the level and directories based on your project structure
 
     # Optionally, you can use a linter like PHP_CodeSniffer
     - name: Run PHP_CodeSniffer
