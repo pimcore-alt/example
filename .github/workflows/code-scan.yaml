@@ -27,7 +27,7 @@ jobs:
  
     # Optional: Ensure PHPStan and PHP_CodeSniffer are installed
     - name: Install PHPStan and PHP_CodeSniffer
-      run: composer require --dev phpstan/phpstan squizlabs/php_codesniffer
+      run: composer require --dev phpstan/phpstan squizlabs/php_codesniffer phpmd/phpmd friendsofphp/php-cs-fixer vimeo/psalm
 
     # Install PHP dependencies
     - name: Install dependencies
@@ -56,5 +56,15 @@ jobs:
 #      run: vendor/bin/phpstan analyse --level=max src   # Adjust the level and directories based on your project structure
 
     # Optionally, you can use a linter like PHP_CodeSniffer
-    - name: Run PHP_CodeSniffer
-      run: vendor/bin/phpcs --standard=PSR12 src
+   #  - name: Run PHP_CodeSniffer
+   #    run: vendor/bin/phpcs --standard=PSR12 src
+
+ #   - name: Run PHPMD
+ #     run: vendor/bin/phpmd src
+
+    - name: Run PHP-CS-Fixer
+      run: vendor/bin/php-cs-fixer src
+
+ #  - name: Run PHP psalm
+  #    run: vendor/bin/psalm src
+~
