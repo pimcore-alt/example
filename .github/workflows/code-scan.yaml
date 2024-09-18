@@ -67,4 +67,3 @@ jobs:
 
  #  - name: Run PHP psalm
   #    run: vendor/bin/psalm src
-~
