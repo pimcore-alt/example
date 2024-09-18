@@ -51,10 +51,10 @@ jobs:
     - name: Scan the php code
       run: ./local-php-security-checker .
 
- #   # Run PHPStan for static code analysis
- #   - name: Run PHPStan
- #     run: find . -type d -name 'vendor' -prune -o -type f -name '*.php' -print | vendor/bin/phpstan analyse --level=max .   # Adjust the level and directories based on your project structure
+    # Run PHPStan for static code analysis
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse --level=max src   # Adjust the level and directories based on your project structure
 
     # Optionally, you can use a linter like PHP_CodeSniffer
     - name: Run PHP_CodeSniffer
-      run: vendor/bin/phpcs --standard=PSR12 . 
+      run: vendor/bin/phpcs --standard=PSR12 src
