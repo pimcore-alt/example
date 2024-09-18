@@ -20,7 +20,8 @@
   },
   "require-dev": {
     "codeception/codeception": "^5.0.3",
-    "codeception/module-symfony": "^3.1.0"
+    "codeception/module-symfony": "^3.1.0",
+    "squizlabs/php_codesniffer": "*"
   },
   "suggest": {
     "pimcore/data-hub": "Universal data interface for GraphQL, CSV and other formats"
