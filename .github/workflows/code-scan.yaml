@@ -26,12 +26,12 @@ jobs:
         php-version: '8.2'  # Use the appropriate PHP version for your project
  
     # Optional: Ensure PHPStan and PHP_CodeSniffer are installed
-    - name: Install PHPStan and PHP_CodeSniffer
-      run: composer require --dev phpstan/phpstan squizlabs/php_codesniffer phpmd/phpmd friendsofphp/php-cs-fixer vimeo/psalm
+#    - name: Install PHPStan and PHP_CodeSniffer
+ #     run: composer require --dev phpstan/phpstan squizlabs/php_codesniffer phpmd/phpmd friendsofphp/php-cs-fixer vimeo/psalm
 
     # Install PHP dependencies
-    - name: Install dependencies
-      run: composer install --no-progress --no-suggest --prefer-dist
+ #   - name: Install dependencies
+  #    run: composer install --no-progress --no-suggest --prefer-dist
 
         ## Download Local PHP Security Checker binary
 
