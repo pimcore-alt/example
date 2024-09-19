@@ -42,8 +42,8 @@ jobs:
           chmod +x local-php-security-checker
 
     # Debug step to list contents of vendor/bin
-    - name: List vendor/bin directory
-      run: ls -l vendor/bin
+#    - name: List vendor/bin directory
+ #     run: ls -l vendor/bin
 
     - name: List project directory
       run: ls -la
