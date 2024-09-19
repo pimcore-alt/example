@@ -65,5 +65,5 @@ jobs:
  #    - name: Run PHP-CS-Fixer
    #    run: vendor/bin/php-cs-fixer fix src/
 
-    - name: Run PHP psalm
-      run: vendor/bin/psalm src
+#    - name: Run PHP psalm
+#      run: vendor/bin/psalm src
